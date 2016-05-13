@@ -1,6 +1,6 @@
 {
   "name": "react-starter",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Starter template with React, Redux, Gulp, Browserify, SASS/SCSS and InuitCSS ",
   "main": "index.html",
   "scripts": {
