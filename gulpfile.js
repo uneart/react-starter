@@ -55,7 +55,7 @@ gulp.task('browser-sync', function() {
         server : {},
         middleware : [ historyApiFallback() ],
         ghostMode: false,
-        files: ['build/css/*.css', 'build/*.js', '*.php', '*.html']
+        files: ['build/css/*.css', '*.php', '*.html']
     });
 });
 
