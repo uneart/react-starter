@@ -1,0 +1,34 @@
+/**
+ * TYPE
+ */
+
+/**
+ * HEADINGS
+ */
+@include headings() {
+    @include font-weight(bold);
+    color: $color-headings;
+}
+
+button,
+input:focus,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+textarea:focus {
+    transition: $base-transition;
+}
+
+b,
+strong {
+    @include font-weight(bold);
+}
+
+blockquote,
+cite,
+em,
+i {
+    font-style: italic;
+}
+
+

@@ -1,0 +1,24 @@
+/**
+ * SETTINGS RESPONSIVE
+ *
+ * Set breakpoints here like the following:
+ * "palm"  "screen and (min-width: 25em) and (max-width: 44.9375em)"
+ */
+
+$breakpoints: (
+    "palm-up"       "screen and (min-width: 25em)",
+    "lap-up"        "screen and (min-width: 45em)",
+    "desk"          "screen and (min-width: 64em)",
+    "retina"        "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)"
+);
+
+$inuit-responsive-settings: true;
+
+$inuit-widths-columns-responsive: (
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+);

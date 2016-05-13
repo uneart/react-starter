@@ -1,0 +1,13 @@
+/**
+ * LINKS
+ */
+
+a {
+    color: $color-links;
+    text-decoration: none;
+    transition: $base-transition;
+
+    @include attention() {
+        text-decoration: underline;
+    }
+}
