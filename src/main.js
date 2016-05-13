@@ -3,7 +3,7 @@ import ReactDOM  from 'react-dom';
 import { Provider }  from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 
-import { Router, Route } from 'react-router';
+import { Router, Route, useRouterHistory } from 'react-router';
 import { createHistory } from 'history';
 
 import reducers from './reducers'
@@ -19,8 +19,8 @@ const store = createStore(reducers, compose(
 ));
 
 ReactDOM.render(
-      <Router history={createHistory()}>
     <Provider store={store}>
+      <Router history={useRouterHistory(createHistory)()}>
         <Route path="/" component={App}/>
         <Route path="*" component={NotFound}/>
       </Router>
