@@ -24,14 +24,14 @@ gulp.task('styles',function() {
   // move over fonts
 
   gulp.src('css/fonts/**.*')
-    .pipe(gulp.dest('build/css/fonts'))
+    .pipe(gulp.dest('build/css/fonts'));
 
   // Compiles CSS
   gulp.src('css/style.styl')
     .pipe(stylus())
     .pipe(autoprefixer())
     .pipe(gulp.dest('./build/css/'))
-    .pipe(reload({stream:true}))
+    .pipe(reload({stream:true}));
 });
 
 /*
@@ -39,7 +39,7 @@ gulp.task('styles',function() {
 */
 gulp.task('images',function(){
   gulp.src('css/images/**')
-    .pipe(gulp.dest('./build/css/images'))
+    .pipe(gulp.dest('./build/css/images'));
 });
 
 /*
@@ -64,11 +64,10 @@ function handleErrors() {
 }
 
 function buildScript(file, watch) {
+
   var props = {
     entries: ['./scripts/' + file],
     debug : true,
-    cache: {},
-    packageCache: {},
     transform:  [babelify.configure({stage : 0 })]
   };
 
@@ -100,7 +99,7 @@ function buildScript(file, watch) {
 }
 
 gulp.task('scripts', function() {
-  return buildScript('main.js', false); // this will run once because we set watch to false
+  return buildScript('main.js', false); // this will once run once because we set watch to false
 });
 
 // run 'scripts' task first, then watch for future changes
