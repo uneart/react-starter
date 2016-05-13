@@ -6,7 +6,8 @@ var babelify = require('babelify');
 var watchify = require('watchify');
 var notify = require('gulp-notify');
 
-var stylus = require('gulp-stylus');
+var sass = require('gulp-sass');
+var cssnano = require('gulp-cssnano');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
@@ -23,14 +24,17 @@ var historyApiFallback = require('connect-history-api-fallback');
 gulp.task('styles',function() {
   // move over fonts
 
-  gulp.src('css/fonts/**.*')
+  gulp.src('sass/fonts/**.*')
     .pipe(gulp.dest('build/css/fonts'));
 
   // Compiles CSS
-  gulp.src('css/style.styl')
-    .pipe(stylus())
+  gulp.src(['sass/*.scss', 'sass/*.sass'])
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./build/css/'))
+    .pipe(rename({ suffix: '.min'}))
+    .pipe(cssnano())
+    .pipe(gulp.dest('build/css'))
     .pipe(reload({stream:true}));
 });
 
@@ -38,7 +42,7 @@ gulp.task('styles',function() {
   Images
 */
 gulp.task('images',function(){
-  gulp.src('css/images/**')
+  gulp.src('sass/images/**')
     .pipe(gulp.dest('./build/css/images'));
 });
 
@@ -50,7 +54,8 @@ gulp.task('browser-sync', function() {
         // we need to disable clicks and forms for when we test multiple rooms
         server : {},
         middleware : [ historyApiFallback() ],
-        ghostMode: false
+        ghostMode: false,
+        files: ['build/css/*.css', 'build/*.js', '*.php', '*.html']
     });
 });
 
@@ -104,6 +109,6 @@ gulp.task('scripts', function() {
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['images','styles','scripts','browser-sync'], function() {
-  gulp.watch('css/**/*', ['styles']); // gulp watch for stylus changes
+  gulp.watch('sass/**/*', ['styles']); // gulp watch for SASS changes
   return buildScript('main.js', true); // browserify watch for JS changes
 });
