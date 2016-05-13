@@ -24,11 +24,11 @@ var historyApiFallback = require('connect-history-api-fallback');
 gulp.task('styles',function() {
   // move over fonts
 
-  gulp.src('sass/fonts/**.*')
+  gulp.src('styles/fonts/**.*')
     .pipe(gulp.dest('build/css/fonts'));
 
   // Compiles CSS
-  gulp.src(['sass/*.scss', 'sass/*.sass'])
+  gulp.src(['styles/*.scss', 'styles/*.sass'])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./build/css/'))
@@ -42,7 +42,7 @@ gulp.task('styles',function() {
   Images
 */
 gulp.task('images',function(){
-  gulp.src('sass/images/**')
+  gulp.src('styles/images/**')
     .pipe(gulp.dest('./build/css/images'));
 });
 
@@ -71,7 +71,7 @@ function handleErrors() {
 function buildScript(file, watch) {
 
   var props = {
-    entries: ['./scripts/' + file],
+    entries: ['./src/' + file],
     debug : true,
     transform:  [babelify.configure({stage : 0 })]
   };
@@ -109,6 +109,6 @@ gulp.task('scripts', function() {
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['images','styles','scripts','browser-sync'], function() {
-  gulp.watch('sass/**/*', ['styles']); // gulp watch for SASS changes
+  gulp.watch('styles/**/*', ['styles']); // gulp watch for SASS changes
   return buildScript('main.js', true); // browserify watch for JS changes
 });
