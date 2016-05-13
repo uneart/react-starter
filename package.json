@@ -1,8 +1,8 @@
 {
-  "name": "catch-of-the-day",
+  "name": "react-starter",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Starter template with React, Redux, Gulp, Browserify, SASS/SCSS and InuitCSS ",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
